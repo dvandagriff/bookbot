@@ -1,6 +1,11 @@
-from curses.ascii import isalpha
 def get_num_words(book_str: str) -> int:
-    return len([i for i in book_str.replace('  ', ' ').replace('\n', ' ').split(' ') if len(i) > 0])
+    book_str = (
+        book_str
+        .replace('  ', ' ')
+        .replace('\n', ' ')
+    )
+    return len([
+        i for i in book_str.split(' ') if len(i) > 0])
 
 
 def get_num_chars(book_str: str) -> dict:

@@ -1,4 +1,5 @@
 from stats import get_num_words, get_sorted_num_chars
+import sys
 
 def get_book_text(path_to_file: str) -> str:
     with open(path_to_file) as f:
@@ -24,10 +25,13 @@ def print_report(book_path: str, book_str: str):
     print("============= END ===============")
 
 
-def main():
-    book_path = 'books/frankenstein.txt'
+def main(book_path: str):
     print_report(book_path, get_book_text(book_path))
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main(sys.argv[1])
+    except IndexError:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
